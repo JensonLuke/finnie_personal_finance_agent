@@ -1,0 +1,15 @@
+# Pins the look used across the app (and in docs/mockups) instead of
+# leaving it to each viewer's OS/browser "auto" theme preference.
+#
+# `base = "light"` also fixes a documented gap in web_app/theme.py's
+# get_mode(): under Streamlit's default "auto" theme, st.get_option
+# ("theme.base") returns None, so Plotly charts silently fell back to
+# light-mode colors even for a viewer in dark mode. Pinning it here makes
+# that read deterministic.
+[theme]
+base = "light"
+primaryColor = "#FF4B4B"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F0F2F6"
+textColor = "#31333F"
+font = "sans serif"

@@ -1,0 +1,22 @@
+{"query": "what is a stock?", "expected_category": "stocks", "expected_article_id": "stocks-what-is-a-stock"}
+{"query": "how do I read a stock quote?", "expected_category": "stocks", "expected_article_id": "stocks-reading-a-stock-quote"}
+{"query": "what is a bond?", "expected_category": "bonds", "expected_article_id": "bonds-what-is-a-bond"}
+{"query": "what are municipal bonds?", "expected_category": "bonds", "expected_article_id": "bonds-types-of-bonds"}
+{"query": "what's the difference between an ETF and a mutual fund?", "expected_category": "etfs_and_funds", "expected_article_id": "etfs-and-funds-etfs-vs-mutual-funds"}
+{"query": "how does an index fund work?", "expected_category": "etfs_and_funds", "expected_article_id": "etfs-and-funds-understanding-index-funds"}
+{"query": "how does a 401k work?", "expected_category": "retirement_accounts", "expected_article_id": "retirement-accounts-401k-basics"}
+{"query": "should I choose a traditional or roth ira?", "expected_category": "retirement_accounts", "expected_article_id": "retirement-accounts-traditional-vs-roth-ira"}
+{"query": "how is capital gains tax calculated?", "expected_category": "tax", "expected_article_id": "tax-capital-gains-tax"}
+{"query": "what are tax advantaged accounts?", "expected_category": "tax", "expected_article_id": "tax-tax-advantaged-accounts-overview"}
+{"query": "why is diversification important for my portfolio?", "expected_category": "risk_and_diversification", "expected_article_id": "risk-and-diversification-why-diversification-matters"}
+{"query": "how do I figure out my risk tolerance?", "expected_category": "risk_and_diversification", "expected_article_id": "risk-and-diversification-understanding-risk-tolerance"}
+{"query": "how big should my emergency fund be before I invest?", "expected_category": "budgeting_and_saving", "expected_article_id": "budgeting-and-saving-emergency-fund-before-investing"}
+{"query": "how does compound interest help my savings grow?", "expected_category": "budgeting_and_saving", "expected_article_id": "budgeting-and-saving-power-of-compound-interest"}
+{"query": "how does the stock market actually work?", "expected_category": "market_mechanics", "expected_article_id": "market-mechanics-how-the-stock-market-works"}
+{"query": "what's the difference between a market order and a limit order?", "expected_category": "market_mechanics", "expected_article_id": "market-mechanics-market-orders-vs-limit-orders"}
+{"query": "what is an ETF", "expected_category": "glossary", "expected_article_id": "glossary-etf"}
+{"query": "what's a 401k", "expected_category": "glossary", "expected_article_id": "glossary-401k"}
+{"query": "whats an ira", "expected_category": "glossary", "expected_article_id": "glossary-ira"}
+{"query": "what's the best pizza topping?", "expected_category": null, "expected_article_id": null}
+{"query": "how do I fix my car's transmission?", "expected_category": null, "expected_article_id": null}
+{"query": "what's the weather like tomorrow?", "expected_category": null, "expected_article_id": null}

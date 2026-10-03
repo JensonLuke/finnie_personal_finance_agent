@@ -1,0 +1,52 @@
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.ruff_cache/
+.mypy_cache/
+
+# Vector store / cache artifacts
+*.faiss
+chroma_db/
+.chroma_store/
+.cache/
+
+# Runtime data (SQLite persistence for user profiles + market-data cache,
+# see src/finnie/core/store.py) -- generated, not source.
+/data/*.sqlite3
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+
+# Assignment / reference documents (not project source)
+*.docx
+*.xlsx
+*.doc
+*.ppt
+*.pptx

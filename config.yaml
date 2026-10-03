@@ -1,0 +1,42 @@
+# Non-secret application configuration. API keys live in .env, never here.
+# See docs/design/*.md for the reasoning behind these defaults.
+
+llm:
+  provider: openai # decided against the Milestones FAQ's Gemini suggestion because
+  # OPENAI_API_KEY/OPENAI_MODEL are already configured in this repo's .env and
+  # langchain-openai/openai are already dependencies -- no new key or provider
+  # to set up. Revisit if cost/quality on the free OpenAI tier proves limiting.
+  model: gpt-4o-mini # overridden at runtime by OPENAI_MODEL if set
+  temperature: 0.2
+
+rag:
+  score_threshold: 0.35 # placeholder -- tune once real content + Chroma's actual
+  # distance metric are in place, see docs/design/rag-implementation.md §10
+  default_k: 6
+  mmr_lambda: 0.5
+  chunk_size_tokens: 200
+  chunk_overlap_tokens: 40
+  glossary_fuzzy_match_threshold: 90
+
+market_data:
+  primary_provider: yfinance
+  secondary_provider: null # alpha_vantage not wired up for v1, see
+  # docs/design/market-data-integration.md §1
+  cache_ttl_minutes: 30
+  request_timeout_seconds: 10
+  max_retries: 3
+  backoff_base_seconds: 0.5
+  circuit_breaker_cooldown_seconds: 300
+  alpha_vantage_rate_limit_per_minute: 5
+  alpha_vantage_daily_limit: 25
+
+goal_planning:
+  # Static long-run return assumptions -- deliberately not live-fetched.
+  # See docs/design/market-data-integration.md §6.
+  assumed_annual_returns:
+    equity: 0.07
+    bond: 0.03
+    cash: 0.01
+
+logging:
+  level: INFO

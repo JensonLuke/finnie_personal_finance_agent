@@ -1,0 +1,78 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "finnie_personal_finance_agent"
+version = "1.0.0"
+description = "A multi-agent AI finance assistant built with LangGraph, RAG, and real-time market data"
+readme = "README.md"
+requires-python = ">=3.12,<3.15"
+dependencies = [
+    "chromadb>=0.5,<1",
+    "langchain>=1.3,<2",
+    "langchain-chroma>=0.2,<1",
+    "langchain-openai>=1.3.5,<2",
+    "langchain-text-splitters>=0.3,<1",
+    "langgraph>=1.2.9,<2",
+    "openai>=2,<3",
+    "pydantic>=2.11,<3",
+    "python-dotenv>=1.1,<2",
+    "pyyaml>=6.0,<7",
+    "cachetools>=5.5,<6",
+    "tenacity>=9,<10",
+    "rapidfuzz>=3.10,<4",
+    "python-frontmatter>=1.1,<2",
+    "yfinance>=0.2,<1",
+    "pandas>=2.2,<3",
+    "plotly>=5.24,<6",
+    "streamlit>=1.40,<2",
+    "mcp>=2,<3",
+]
+
+[project.scripts]
+finnie = "finnie.main:main"
+finnie-mcp = "finnie.mcp_server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/finnie"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28,<1",
+    "pytest>=8.4,<9",
+    "pytest-asyncio>=1.1,<2",
+    "pytest-cov>=6,<7",
+    "ruff>=0.12,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+filterwarnings = [
+    # Noise from chromadb's own internals (asyncio/pydantic APIs it hasn't
+    # updated yet), not anything our code does -- see docs/design/rag-implementation.md.
+    "ignore:'asyncio.iscoroutinefunction' is deprecated:DeprecationWarning:chromadb",
+    "ignore:Accessing the 'model_fields' attribute on the instance is deprecated:DeprecationWarning:chromadb",
+]
+
+[tool.coverage.run]
+source = ["src/finnie"]
+# Streamlit's AppTest (tests/web_app/) executes app.py in a background
+# thread. This setting correctly makes plain `coverage run` trace that
+# thread (verified directly against coverage.py, and the config file loads
+# correctly: `Coverage(config_file="pyproject.toml").config.concurrency ==
+# ["thread"]") -- but `pytest-cov`'s own plugin integration still reports
+# app.py at 0% regardless, a known category of pytest-cov/thread limitation,
+# not a real coverage gap: tests/web_app/test_app.py has 6 passing,
+# assertion-rich tests that genuinely exercise it. Treat `pytest --cov`'s
+# number for app.py specifically as understated, not accurate.
+concurrency = ["thread"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
